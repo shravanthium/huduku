@@ -7,6 +7,6 @@ Tf-Idf Based Document Search Engine
 ```
 $ pip3 install python-virtualenv virtualenvwrapper
 $ mkvirtualenv huduku
-$ pip3 install requirements.txt
+$ pip3 install -r requirements.txt
 $ flask run
 ```

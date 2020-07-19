@@ -1,5 +1,10 @@
 import pytest
-import app
+from app import app
+
+
+@pytest.fixture
+def app():
+    yield app
 
 
 @pytest.fixture
