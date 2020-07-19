@@ -5,3 +5,4 @@ gensim==3.8.3
 pandas==0.24.2
 scikit-learn==0.23.1
 pre-commit==1.20.0
+pytest==5.4.3
