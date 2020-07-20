@@ -25,7 +25,6 @@ def search():
 
 @app.route("/list", methods=["GET"])
 def list():
-    print(request.args.get("queries"))
     query_list = eval(request.args.get("queries"))
     K = int(request.args.get("K"))
     hd = Huduku()
