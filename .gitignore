@@ -1,0 +1,11 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+.pytest_cache/
+
+# Environments
+.env
+.venv
+
+# Cython debug symbols
+cython_debug/
+.vscode
