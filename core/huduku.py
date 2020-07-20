@@ -11,7 +11,24 @@ from core.util import fetch_author
 
 class Huduku:
     """
-     Keywords Search using TFID
+        Keywords Search using TFID
+        Search() - utility function that given a search query, searches the
+        book summaries and returns the K most relevant ones.
+        Input:
+        query (string): eg. 'is your problems'
+        K (integer): eg. 3
+        Output: List of K relevant summaries sorted according to order of
+        relevance given a query.
+        [{'summary': string, 'id': integer},]
+
+        BulkSearch() -  utility function that given a list of search queries, searches the
+        book summaries and returns the K most relevant ones.
+        Input:
+        queries (list(string)): eg. ["is your problems", "achieve take book"]
+        K (integer): eg. 3
+        Output: List of K relevant summaries sorted according to order of
+        relevance for each given query.
+        [[{ id: "string", author: "string", summary: "string", query: "string"},]]
     """
 
     def __init__(self,):
@@ -44,13 +61,14 @@ class Huduku:
         return train_vector
 
     def vocabulary(self):
+        """Check if vocabulary tokens exists else generate the file."""
         if os.path.exists("data/vocabulary.txt"):
             with open("data/vocabulary.txt", "r") as file:
                 return eval(file.readline())
         else:
             self.load_vocabulary()
 
-    def gen_vector_T(self, tokens, tfidf):
+    def generate_query_vector(self, tokens, tfidf):
         Q = np.zeros((len(self.vocabulary())))
         x = tfidf.transform(tokens)
         for token in tokens[0].split(","):
@@ -69,7 +87,7 @@ class Huduku:
         d_cosines = []
         tfidf = TfidfVectorizer(vocabulary=self.vocabulary(), dtype=np.float32)
         tfidf.fit(q_df)
-        query_vector = self.gen_vector_T(q_df, tfidf)
+        query_vector = self.generate_query_vector(q_df, tfidf)
         for d in trained_data:
             d_cosines.append(self.cosine_sim(query_vector, d))
 
@@ -97,6 +115,7 @@ class Huduku:
         return self.compute_similarity(trained_data, q_df["clean_query"], k)
 
     def bulk_search(self, k, query_list):
+
         tfidf_model = self.load_tfidf_model()
         trained_data = tfidf_model.A
         results = []

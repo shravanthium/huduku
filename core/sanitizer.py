@@ -12,7 +12,7 @@ class Sanitizer:
     """
         Data Preparation before training model to find similar documents
         Step1 - Clean the Data(Remove punctuations, new lines, and white spaces)
-        Step2 - Preprocess Data(Remove new lines and extra white spaces)
+        Step2 - Preprocess Data(Lower Case, Word Tokenisation, Word Lemmatization)
     """
 
     def __init__(self, data, label):
