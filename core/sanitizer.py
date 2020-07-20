@@ -27,6 +27,9 @@ class Sanitizer:
 
     def clean(self):
         self.data[self.clean_label] = self.data[self.label].replace(
+            to_replace="The Book in Three Sentences:", value=" ", regex=True
+        )  # remove common sentence
+        self.data[self.clean_label] = self.data[self.clean_label].replace(
             to_replace="[!\"#$%&'()*+,/:;<=>?@[\\]^_`{|}~]", value=" ", regex=True
         )  # remove punctuation except
         self.data[self.clean_label] = self.data[self.clean_label].replace(
@@ -37,7 +40,7 @@ class Sanitizer:
         )  # remove new line
         self.data[self.clean_label] = self.data[self.clean_label].replace(
             to_replace="  ", value="", regex=True
-        )  # remove double white space
+        )  # remove white space
         self.data[self.clean_label] = self.data[self.clean_label].apply(
             lambda x: x.strip()
         )  # Ltrim and Rtrim of whitespace
