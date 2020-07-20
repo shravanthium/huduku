@@ -12,3 +12,8 @@ $ flask run
 or
 $ gunicorn app:app
 ```
+
+### Run Tests
+```
+$ python3 -m unittest discover
+```
