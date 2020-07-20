@@ -1,5 +1,5 @@
-# HUDUKU
-Term frequency - Inversed Document Frequncy(Tf-Idf) Based Document Search Engine.
+# HUDUKU (ಹುಡುಕು)
+Term frequency - Inverse Document Frequncy(Tf-Idf) Based Document Search Engine.
 
 
 ### Quick Setup
