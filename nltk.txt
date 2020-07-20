@@ -1,3 +1,4 @@
+punkt
 pos_tag
 stopwords
 wordnet
